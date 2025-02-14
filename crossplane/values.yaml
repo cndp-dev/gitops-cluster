@@ -1,0 +1,6 @@
+metrics:
+  enabled: true
+
+provider:
+  packages:
+    - xpkg.upbound.io/edixos/provider-ovh:v1.1.0
