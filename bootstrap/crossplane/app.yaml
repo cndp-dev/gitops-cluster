@@ -13,6 +13,9 @@ spec:
     repoURL: https://github.com/cndp-dev/gitops-cluster
     targetRevision: HEAD
     path: crossplane
+    helm:
+      valueFiles:
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: crossplane-system
