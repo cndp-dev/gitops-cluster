@@ -15,7 +15,8 @@ spec:
         repoURL: https://github.com/cndp-dev/gitops-cluster
         revision: HEAD
         directories:
-          - path: crossplane/*
+          - path: crossplane/providers
+          - path: crossplane/providers-config
   template:
     metadata:
       name: {{.path.basename}}
@@ -24,7 +25,7 @@ spec:
       source:
         repoURL: https://github.com/cndp-dev/gitops-cluster
         targetRevision: HEAD
-        path: {{.path.path}}
+        path: {{.path}}
       destination:
         server: https://kubernetes.default.svc
         namespace: crossplane-system
