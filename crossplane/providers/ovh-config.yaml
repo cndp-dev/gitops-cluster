@@ -1,0 +1,11 @@
+apiVersion: ovh.edixos.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  credentials:
+    secretRef:
+      key: credentials
+      name: ovh-creds
+      namespace: crossplane-system
+    source: Secret
