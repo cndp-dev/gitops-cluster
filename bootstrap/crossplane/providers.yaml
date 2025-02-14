@@ -8,6 +8,8 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "2"
 spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
   generators:
     - git:
         repoURL: https://github.com/cndp-dev/gitops-cluster
