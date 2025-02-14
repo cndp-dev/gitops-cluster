@@ -6,13 +6,13 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   project: default
   source:
     repoURL: https://github.com/cndp-dev/gitops-cluster
     targetRevision: HEAD
-    path: crossplane/providers
+    path: crossplane/providers-configs
   destination:
     server: https://kubernetes.default.svc
     namespace: crossplane-system
