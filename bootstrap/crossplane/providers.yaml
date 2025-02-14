@@ -1,5 +1,5 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
   name: crossplane-providers
   namespace: argocd
@@ -8,22 +8,32 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "2"
 spec:
-  project: default
-  source:
-    repoURL: https://github.com/cndp-dev/gitops-cluster
-    targetRevision: HEAD
-    path: crossplane/providers
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: crossplane-system
-  syncPolicy:
-    automated:
-      prune: true    
-    syncOptions:
-    - CreateNamespace=true
-    retry:
-      limit: 1
-      backoff:
-        duration: 5s 
-        factor: 2 
-        maxDuration: 1m
+  generators:
+    - git:
+        repoURL: https://github.com/cndp-dev/gitops-cluster
+        revision: HEAD
+        directories:
+          - path: crossplane/*
+  template:
+    metadata:
+      name: {{.path.basename}}
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/cndp-dev/gitops-cluster
+        targetRevision: HEAD
+        path: {{.path.path}}
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: crossplane-system
+      syncPolicy:
+        automated:
+          prune: true    
+        syncOptions:
+        - CreateNamespace=true
+        retry:
+          limit: 1
+          backoff:
+            duration: 5s 
+            factor: 2 
+            maxDuration: 1m
