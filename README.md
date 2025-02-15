@@ -11,5 +11,9 @@ argocd account update-password --current-password PASSWORD
 kubectl delete -n argocd secrets argocd-initial-admin-secret
 
 kubectl apply -f bootstrap/crossplane.yaml
+kubectl apply -f ovh-creds.yaml
+```
+
+```
 
 ```
