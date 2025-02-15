@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: https://github.com/cndp-dev/gitops-cluster
     targetRevision: HEAD
-    path: crossplane/providers-configs
+    path: crossplane/providers-config
   destination:
     server: https://kubernetes.default.svc
     namespace: crossplane-system
