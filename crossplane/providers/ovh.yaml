@@ -1,9 +1,0 @@
-apiVersion: pkg.crossplane.io/v1
-kind: Provider
-metadata:
-  name: provider-ovh
-spec:
-  package: xpkg.upbound.io/edixos/provider-ovh:v1.1.0
-  packagePullPolicy: IfNotPresent
-  revisionActivationPolicy: Automatic
-  revisionHistoryLimit: 1

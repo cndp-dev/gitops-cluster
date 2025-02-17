@@ -1,6 +1,10 @@
 # gitops-cluster
 
+
 ```
+gcloud container clusters create gitops --num-nodes 1 --machine-type e2-medium --disk-size 30 --enable-autoscaling --min-nodes 1 --max-nodes 3 --preemptible --enable-dataplane-v2
+gcloud container clusters get-credentials gitops > kubeconfig.yaml
+
 kubectl apply -k bootstrap/argocd
 kubectl wait --for=condition=ready pod -l app.kubernetes.io/name=argocd-server --namespace argocd --timeout=300s
 
