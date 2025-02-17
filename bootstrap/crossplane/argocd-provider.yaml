@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: crossplane-providers
+  name: argocd-provider
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -13,6 +13,8 @@ spec:
     repoURL: https://github.com/cndp-dev/gitops-cluster
     targetRevision: HEAD
     path: crossplane/providers
+    directory:
+      include: 'argocd.yaml'
   destination:
     server: https://kubernetes.default.svc
     namespace: crossplane-system
